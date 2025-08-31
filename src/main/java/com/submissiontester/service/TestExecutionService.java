@@ -321,8 +321,8 @@ public class TestExecutionService {
      */
     private boolean compareFiles(Path actual, Path expected) {
         try {
-            String actualContent = Files.readString(actual).trim();
-            String expectedContent = Files.readString(expected).trim();
+            String actualContent = Files.readString(actual).replace("\r\n", "\n").trim();
+            String expectedContent = Files.readString(expected).replace("\r\n", "\n").trim();
             return actualContent.equals(expectedContent);
         } catch (IOException e) {
             logger.error("Error comparing files", e);
